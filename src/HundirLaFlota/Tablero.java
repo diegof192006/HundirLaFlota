@@ -46,5 +46,42 @@ public static char[][] crearTableroDisparos(int filas, int columnas) {
             System.out.println();
         }
     }
+    /*Muestra el tablero del jugador con barcos y los disparos de la CPU*/
+    public static void mostrarTableroConBarcos(int[][] tableroBarcos, char[][] tableroDisparosCPU) {
 
+        int filas = tableroBarcos.length;
+        int columnas = tableroBarcos[0].length;
+        System.out.print("   ");
+        for (int c = 0; c < columnas; c++)
+            System.out.print(c + " ");
+        System.out.println();
+
+        for (int f = 0; f < filas; f++) {
+            System.out.print(f + "  ");
+            for (int c = 0; c < columnas; c++) {
+                int idBarco = tableroBarcos[f][c];
+                char disparo = tableroDisparosCPU[f][c];
+                char simbolo;
+                if (idBarco == -1) {
+                    // Agua
+                    if (disparo == '~') simbolo = '.';
+                    else simbolo = 'A'; //agua
+                } else {
+                    // Había barco
+                    if (disparo == 'T') simbolo = 'T';
+                    else if (disparo == 'H') simbolo = 'H';
+                    else simbolo = (char) ('0' + idBarco); // mostrar ID del barco
+                }
+
+                System.out.print(simbolo + " ");
+            }
+
+            System.out.println();
+        }
+    }
+
+    /*Comprueba si las coordenadas están dentro del tablero.*/
+    public static boolean esCoordenadaValida(int fila, int columna, int filas, int columnas) {
+        return fila >= 0 && fila < filas && columna >= 0 && columna < columnas;
+    }
 }
