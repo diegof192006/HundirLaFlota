@@ -23,7 +23,7 @@ public class Disparos {
             tableroDisparos[fila][columna] = 'A'; // agua
             return false; // no hundido
         }
-        // 2. TOCADO o HUNDIDO
+        // 2. TOCADO
 
         impactosBarco[idBarco]++;  // sumamos impacto al barco
         int impactosActuales = impactosBarco[idBarco];
@@ -49,7 +49,7 @@ public class Disparos {
             return true; // barco hundido en este disparo
         }
 
-        return false; // fallback
+        return false;
     }
 }
 
